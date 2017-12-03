@@ -36,7 +36,7 @@ public class SmokingDataSource {
     public static void setSmoke(final Context context) {
         smoking = new ArrayList<>();
 
-        final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/drinking/all";
+        final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/smoking/all";
         final String TAG = "SmokingDataSource";
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
         StringRequest postRequest = new StringRequest(Request.Method.GET, ServerURL, // the request body, which is a JsonObject otherwise null

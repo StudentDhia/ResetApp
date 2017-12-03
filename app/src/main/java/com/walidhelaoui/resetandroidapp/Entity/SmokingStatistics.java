@@ -11,6 +11,7 @@ public class SmokingStatistics {
     float price;
 
     public SmokingStatistics() {
+
     }
 
     public SmokingStatistics(int number, String date, float price) {
