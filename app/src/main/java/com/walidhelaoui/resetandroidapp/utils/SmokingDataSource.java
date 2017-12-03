@@ -30,7 +30,6 @@ import java.util.Map;
 
 public class SmokingDataSource {
 
-    private static HashMap<String, List<SmokingStatistics>> smoke = new HashMap<>();
     public static List<SmokingStatistics> smoking = new ArrayList<>();
 
     public static void setSmoke(final Context context) {
@@ -45,8 +44,7 @@ public class SmokingDataSource {
                     public void onResponse(String response) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                           // SmokeSavedMoney.this.setSavedMoney(jsonObject.getInt("savedMoney"));
-                           // SmokeSavedMoney.this.setCount(jsonObject.getInt("count"));
+
                             for (int i = 0; i < jsonArray.length() ; i++) {
                                 Log.e(TAG,String.valueOf(i));
                                 SmokingStatistics smokingStatistics = new SmokingStatistics();
@@ -56,8 +54,6 @@ public class SmokingDataSource {
                                 smoking.add(smokingStatistics);
                             }
                             Log.e(TAG,jsonArray.toString());
-                           // Log.e(TAG,jsonArray.getJSONArray(1).getJSONObject(1).toString());
-                            Toast.makeText(context,"alala",Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

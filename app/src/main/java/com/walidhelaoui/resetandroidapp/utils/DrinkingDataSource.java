@@ -27,7 +27,6 @@ import java.util.Map;
 
 public class DrinkingDataSource {
 
-    private static HashMap<String, List<DrinkingStatistics>> drink = new HashMap<>();
     public static List<DrinkingStatistics> drinking = new ArrayList<>();
 
     public static void setDrink(final Context context) {
@@ -42,8 +41,7 @@ public class DrinkingDataSource {
                     public void onResponse(String response) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            // SmokeSavedMoney.this.setSavedMoney(jsonObject.getInt("savedMoney"));
-                            // SmokeSavedMoney.this.setCount(jsonObject.getInt("count"));
+
                             for (int i = 0; i < jsonArray.length() ; i++) {
                                 Log.e(TAG,String.valueOf(i));
                                 DrinkingStatistics drinkingStatistics = new DrinkingStatistics();
@@ -53,7 +51,6 @@ public class DrinkingDataSource {
                                 drinking.add(drinkingStatistics);
                             }
                             Log.e(TAG,jsonArray.toString());
-                            Toast.makeText(context,"alala",Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

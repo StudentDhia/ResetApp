@@ -23,7 +23,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SmokingStatisticsActivity" />
         <activity android:name=".DrinkingStatisticsActivity" />
-        <activity android:name=".SmokingChartActivity"></activity>
+        <activity android:name=".SmokingChartActivity" />
+        <activity android:name=".DrinkingChartActivity"></activity>
     </application>
 
 </manifest>

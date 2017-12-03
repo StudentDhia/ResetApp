@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.walidhelaoui.resetandroidapp.DrinkingChartActivity;
 import com.walidhelaoui.resetandroidapp.DrinkingStatisticsActivity;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
 import com.walidhelaoui.resetandroidapp.MainActivity;
@@ -54,6 +55,13 @@ public class DrinkFragment extends Fragment {
             }
         });
 
+        ImageView charts = (ImageView) view.findViewById(R.id.charts);
+        charts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), DrinkingChartActivity.class));
+            }
+        });
         return view;
     }
 
