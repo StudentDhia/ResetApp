@@ -43,7 +43,6 @@ public class SmokeFragment extends Fragment {
 
     public SmokeFragment(Context context) {
         // Required empty public constructor
-        Toast.makeText(context,"a",Toast.LENGTH_SHORT).show();
          smokeSavedMoney = new SmokeSavedMoney(context);
     }
 

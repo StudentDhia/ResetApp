@@ -1,6 +1,5 @@
 package com.walidhelaoui.resetandroidapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -16,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +28,11 @@ import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import com.roughike.bottombar.BottomBar;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class MainActivity extends AppCompatActivity {
 
-    ProgressDialog progressDialog;
+    GifImageView loading;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private static final String TAG = "LoginActivity";
@@ -44,9 +46,12 @@ public class MainActivity extends AppCompatActivity {
         {
             MainActivity.this.mHandler.postDelayed(m_Runnable, 3000);
 
-            if (!CurrentUser.user.getUsername().equals("")){
+            if (!CurrentUser.user.toString().equals("")){
                 Log.e(TAG, CurrentUser.user.getUsername());
-                progressDialog.hide();
+                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.contentDrawer);
+                relativeLayout.setVisibility(View.VISIBLE);
+                loading = (GifImageView) findViewById(R.id.loading);
+                loading.setVisibility(View.GONE);
                 tv_email.setText(CurrentUser.user.getEmail());
                 replaceFragment(new SmokeFragment(MainActivity.this));
                 mHandler.removeCallbacksAndMessages(null);
@@ -63,10 +68,8 @@ public class MainActivity extends AppCompatActivity {
         this.mHandler = new Handler();
         this.mHandler.postDelayed(m_Runnable,3000);
 
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.contentDrawer);
+        relativeLayout.setVisibility(View.INVISIBLE);
         drinkSavedMoney = new DrinkSavedMoney(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
