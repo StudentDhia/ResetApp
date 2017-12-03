@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_smoke"
+        icon="@drawable/ic_smoking_rooms_black_24dp"
+        title="Smoke" />
+    <tab
+        id="@+id/tab_drink"
+        icon="@drawable/ic_local_bar_black_24dp"
+        title="Drink" />
+    <tab
+        id="@+id/tab_profile"
+        icon="@drawable/ic_perm_identity_black_24dp"
+        title="Profile" />
+</tabs>
