@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginAction(View view) throws JSONException {
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
-        //startActivity(new Intent(LoginActivity.this,MainActivity.class));
         if (verification()){
             progressDialog.setMessage("Loading...");
             progressDialog.show();
