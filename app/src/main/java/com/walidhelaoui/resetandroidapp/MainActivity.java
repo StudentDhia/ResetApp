@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.home:
                         Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
-                        replaceFragment(new SmokeFragment(MainActivity.this));
+                        //replaceFragment(new SmokeFragment(MainActivity.this));
+                        startActivity(new Intent(MainActivity.this,MainActivity.class));
                         drawerLayout.closeDrawers();
                         bottomBar.setVisibility(View.VISIBLE);
                         break;

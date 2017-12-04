@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String ServerAddress = "http://192.168.0.105/";
+    public static final String ServerAddress = "http://172.18.37.114/";
     public static final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/login";
     public static String token="";
 

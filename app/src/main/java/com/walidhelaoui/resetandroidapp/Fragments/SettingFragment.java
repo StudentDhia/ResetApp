@@ -1,6 +1,7 @@
 package com.walidhelaoui.resetandroidapp.Fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -32,6 +34,7 @@ import java.util.Map;
  */
 public class SettingFragment extends Fragment {
 
+    ProgressDialog progressDialog;
     EditText smokingPrice,drinkingPrice;
     public SettingFragment() {
         // Required empty public constructor
@@ -43,7 +46,7 @@ public class SettingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
-
+        progressDialog = new ProgressDialog(getContext());
          smokingPrice = (EditText) view.findViewById(R.id.edtSmokingPrice);
          drinkingPrice = (EditText) view.findViewById(R.id.edtDrinkingPrice);
 
@@ -90,19 +93,24 @@ public class SettingFragment extends Fragment {
         final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/setting";
         final String TAG = "SettingFragment";
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         // Request parameters to be send with post request
         StringRequest postRequest = new StringRequest(Request.Method.POST, ServerURL, // the request body, which is a JsonObject otherwise null
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.e(TAG,response);
-
+                        progressDialog.hide();
+                        Toast.makeText(getContext(),"The Settings has been changed with success",Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG,"error");
+                        progressDialog.hide();
                     }
                 }
         ) {
@@ -128,7 +136,6 @@ public class SettingFragment extends Fragment {
                 headers.put("Authorization", "Bearer " + LoginActivity.token);
                 return headers;
             }
-
 
         };
 
