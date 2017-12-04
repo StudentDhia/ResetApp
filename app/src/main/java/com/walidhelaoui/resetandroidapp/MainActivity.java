@@ -23,6 +23,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.DrinkFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.QuizFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 loading = (GifImageView) findViewById(R.id.loading);
                 loading.setVisibility(View.GONE);
                 tv_email.setText(CurrentUser.user.getEmail());
-                replaceFragment(new SmokeFragment(MainActivity.this));
+                //replaceFragment(new SmokeFragment(MainActivity.this));
+                replaceFragment(new QuizFragment());
                 mHandler.removeCallbacksAndMessages(null);
             }
         }

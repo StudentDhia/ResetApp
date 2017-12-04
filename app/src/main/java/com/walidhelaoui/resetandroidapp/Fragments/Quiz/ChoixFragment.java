@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz.QuizS1Fragment;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 
@@ -41,7 +42,7 @@ public class ChoixFragment extends Fragment {
         cig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(new QuizFragment2());
+                ((MainActivity)getActivity()).replaceFragment(new QuizS1Fragment());
             }
         });
 
@@ -49,7 +50,7 @@ public class ChoixFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                ((MainActivity)getActivity()).replaceFragment(new QuizA1Fragment());
+               // ((MainActivity)getActivity()).replaceFragment(new QuizA1Fragment());
             }
         });
 
