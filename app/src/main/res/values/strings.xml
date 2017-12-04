@@ -5,4 +5,23 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_there">Hello there !</string>
+    <string name="today">today</string>
+    <string name="a_week_ago">a week ago</string>
+    <string name="a_month_ago">a month ago</string>
+    <string name="when_was_the_last_time_you_smoke">When was the last time you smoke ?</string>
+    <string name="how_soon_after_waking_do_you_smoke_your_first_cigarette">How soon after waking do you smoke your first cigarette ?</string>
+    <string name="within_5_minutes">Within 5 minutes</string>
+    <string name="_5_30_minutes">5-30 minutes</string>
+    <string name="_31_60_minutes">31-60 minutes</string>
+    <string name="do_you_find_it_difficult_to_refrain_from_smoking_in_places_where_it_s_forbidden">Do you find it difficult to refrain from smoking in places where it\'s forbidden ?</string>
+    <string name="yes">yes</string>
+    <string name="non">non</string>
+    <string name="which_cigarette_would_you_hate_to_give_up">Which cigarette would you hate to give up ?</string>
+    <string name="the_first_in_the_morning">The first in the morning</string>
+    <string name="any_other">Any other</string>
+    <string name="how_many_cigarettes_a_day_do_you_smoke">How many cigarettes a day do you smoke</string>
+    <string name="do_you_smoke_more_frequently_in_the_morning">Do you smoke more frequently in the morning ?</string>
+    <string name="do_you_smoke_even_if_you_are_sick_in_bed_most_of_the_day">Do you smoke even if you are sick in bed most of the day ?</string>
+    <string name="how_often_do_you_have_a_drink_containing_alcohol">How often do you have a drink containing alcohol ?</string>
 </resources>
