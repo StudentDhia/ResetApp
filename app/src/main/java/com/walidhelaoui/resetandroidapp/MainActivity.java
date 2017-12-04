@@ -23,6 +23,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.DrinkFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler;
     TextView tv_email;
     public DrinkSavedMoney drinkSavedMoney;
+    BottomBar bottomBar;
     private final Runnable m_Runnable = new Runnable()
     {
         public void run()
@@ -74,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        initNavigationDrawer();
-
-        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
 
         //bottomBar.setVisibility(View.INVISIBLE);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        initNavigationDrawer();
     }
 
     public void initNavigationDrawer() {
@@ -114,11 +114,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
                         replaceFragment(new SmokeFragment(MainActivity.this));
                         drawerLayout.closeDrawers();
+                        bottomBar.setVisibility(View.VISIBLE);
                         break;
                     case R.id.settings:
-                        Toast.makeText(getApplicationContext(),"Profile",Toast.LENGTH_SHORT).show();
-                        replaceFragment(new ProfileFragment());
+                        replaceFragment(new SettingFragment());
                         drawerLayout.closeDrawers();
+                        bottomBar.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.logout:
                         startActivity(new Intent(MainActivity.this,LoginActivity.class));

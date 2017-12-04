@@ -1,0 +1,72 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.walidhelaoui.resetandroidapp.Fragments.SettingFragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/settingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:text="Setting Menu!"
+        android:textSize="24sp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settingTxt"
+        android:id="@+id/smokingPrice"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <EditText
+            android:id="@+id/edtSmokingPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Smoking Price"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/smokingPrice"
+        android:id="@+id/drinkingPrice"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <EditText
+            android:id="@+id/edtDrinkingPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Drinking Price"
+            android:inputType="textPersonName" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_setting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:layout_below="@id/drinkingPrice"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="12dp"
+        android:text="Save Changes"/>
+</RelativeLayout>
+
+</FrameLayout>
