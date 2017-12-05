@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.QuizA1Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundlight">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/monokuma"/>
+
+        <LinearLayout
+            android:id="@+id/contenuQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/question"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textColor="#332d2d"
+                android:text="@string/how_often_do_you_have_a_drink_containing_alcohol"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/a1_reponse1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Never"/>
+            <Button
+                android:id="@+id/a1_reponse2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Monthly or less"/>
+            <Button
+                android:id="@+id/a1_reponse3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="2 to 4 times a month"/>
+            <Button
+                android:id="@+id/a1_reponse4"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="2 to 3 times a week"/>
+            <Button
+                android:id="@+id/a1_reponse5"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="4 or more times a week"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

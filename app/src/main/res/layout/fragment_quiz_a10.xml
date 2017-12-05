@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.QuizA10Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundlight">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/monokuma"/>
+
+        <LinearLayout
+            android:id="@+id/contenuQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/question"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textColor="#332d2d"
+                android:text="Has a relative or friend or a doctor or another health worker been concerned about your drink ing or suggested you cut down ?"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contenuQuiz"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/a10_reponse1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="No"/>
+            <Button
+                android:id="@+id/a10_reponse2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Yes but not in last year"/>
+            <Button
+                android:id="@+id/a10_reponse3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Yes, during this year"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>
