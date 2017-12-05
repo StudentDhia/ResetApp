@@ -1,7 +1,9 @@
 package com.walidhelaoui.resetandroidapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_email;
     public DrinkSavedMoney drinkSavedMoney;
     BottomBar bottomBar;
+    public static final String PREFS_QUIZ = "prefs_quiz";
     private final Runnable m_Runnable = new Runnable()
     {
         public void run()
@@ -56,8 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 loading = (GifImageView) findViewById(R.id.loading);
                 loading.setVisibility(View.GONE);
                 tv_email.setText(CurrentUser.user.getEmail());
-                //replaceFragment(new SmokeFragment(MainActivity.this));
-                replaceFragment(new QuizFragment());
+                //Mode Private allows you to save only one data in the file
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                Boolean quizPrefs = prefs.getBoolean(PREFS_QUIZ,false);
+                if(quizPrefs){
+                    toolbar.setVisibility(View.VISIBLE);
+                    replaceFragment(new SmokeFragment(MainActivity.this));
+                }else {
+                    bottomBar.setVisibility(View.INVISIBLE);
+                    toolbar.setVisibility(View.INVISIBLE);
+                    replaceFragment(new QuizFragment());
+                }
                 mHandler.removeCallbacksAndMessages(null);
             }
         }
@@ -77,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         drinkSavedMoney = new DrinkSavedMoney(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.INVISIBLE);
         setSupportActionBar(toolbar);
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
 

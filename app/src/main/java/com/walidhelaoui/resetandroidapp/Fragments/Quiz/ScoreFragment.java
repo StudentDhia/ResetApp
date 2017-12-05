@@ -3,9 +3,11 @@ package com.walidhelaoui.resetandroidapp.Fragments.Quiz;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,6 +97,10 @@ public class ScoreFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextScore = (TextView) view.findViewById(R.id.score);
         setScore(mParam1,mParam2);
+        // Open SharedPrefs File in Edit Mode
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.edit().putBoolean(MainActivity.PREFS_QUIZ, true).apply();
+
         if(mParam2 == "cigarette") {
             if (mParam1 < 3) {
                 TextScore.setText("Cigarette : Low dependance");
