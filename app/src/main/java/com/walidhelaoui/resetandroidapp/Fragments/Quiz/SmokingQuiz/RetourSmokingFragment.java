@@ -1,27 +1,29 @@
-package com.walidhelaoui.resetandroidapp.Fragments.Quiz;
+package com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.QuizA1Fragment;
-import com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz.QuizS1Fragment;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.ScoreFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChoixFragment extends Fragment {
+public class RetourSmokingFragment extends Fragment {
 
-    private ImageView cig,alchool;
+    Button retour1,retour2;
 
-    public ChoixFragment() {
+    public RetourSmokingFragment() {
         // Required empty public constructor
     }
 
@@ -30,32 +32,30 @@ public class ChoixFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_choix, container, false);
+        return inflater.inflate(R.layout.fragment_retour_smoking, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cig = (ImageView) view.findViewById(R.id.cigarette);
-        alchool = (ImageView) view.findViewById(R.id.alchool);
+        retour1 = (Button) view.findViewById(R.id.retour1_reponse1);
+        retour2 = (Button) view.findViewById(R.id.retour1_reponse2);
 
-        cig.setOnClickListener(new View.OnClickListener() {
+        retour1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(new QuizS1Fragment());
-            }
-        });
-
-        alchool.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
                 ((MainActivity)getActivity()).replaceFragment(new QuizA1Fragment());
             }
         });
 
-
+        retour2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //((MainActivity)getActivity()).replaceFragment(new SmokeFragment(getActivity()));
+                startActivity(new Intent(getActivity(),MainActivity.class));
+            }
+        });
     }
 
 }

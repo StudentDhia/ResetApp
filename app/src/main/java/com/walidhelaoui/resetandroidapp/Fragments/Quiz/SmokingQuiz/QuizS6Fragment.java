@@ -78,6 +78,7 @@ public class QuizS6Fragment extends Fragment {
             public void onClick(View view) {
 
                 ((MainActivity)getActivity()).replaceFragment(ScoreFragment.newInstance(mParam1 + 1, "cigarette"));
+               // ((MainActivity)getActivity()).replaceFragment(RetourSmokingFragment.newInstance(mParam1 + 1, "cigarette"));
             }
         });
 

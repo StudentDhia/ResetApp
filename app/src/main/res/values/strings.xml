@@ -24,4 +24,5 @@
     <string name="do_you_smoke_more_frequently_in_the_morning">Do you smoke more frequently in the morning ?</string>
     <string name="do_you_smoke_even_if_you_are_sick_in_bed_most_of_the_day">Do you smoke even if you are sick in bed most of the day ?</string>
     <string name="how_often_do_you_have_a_drink_containing_alcohol">How often do you have a drink containing alcohol ?</string>
+    <string name="do_you_drink_too">Do you drink too ?</string>
 </resources>

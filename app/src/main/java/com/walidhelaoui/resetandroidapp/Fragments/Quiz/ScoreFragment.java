@@ -22,6 +22,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.RetourAlchoolFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz.RetourSmokingFragment;
 import com.walidhelaoui.resetandroidapp.LoginActivity;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
@@ -47,6 +49,8 @@ public class ScoreFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static final String PREFS_QUIZ_BACK = "prefs_quiz_back";
+
 
     // TODO: Rename and change types of parameters
     private int mParam1;
@@ -102,6 +106,7 @@ public class ScoreFragment extends Fragment {
         prefs.edit().putBoolean(MainActivity.PREFS_QUIZ, true).apply();
 
         if(mParam2 == "cigarette") {
+           // prefs.edit().putBoolean(PREFS_QUIZ_SMOKING, true).apply();
             if (mParam1 < 3) {
                 TextScore.setText("Cigarette : Low dependance");
             } else if (mParam1 == 3 || mParam1 == 4) {
@@ -113,6 +118,7 @@ public class ScoreFragment extends Fragment {
             }
         }
         if(mParam2 == "alcohol") {
+           // prefs.edit().putBoolean(PREFS_QUIZ_DRINKING, true).apply();
             if (mParam1 < 12) {
                 TextScore.setText("Alcohol : Low dependance");
             } else if (mParam1 <16 && mParam1 > 11) {
@@ -127,8 +133,20 @@ public class ScoreFragment extends Fragment {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-               // ((MainActivity)getActivity()).replaceFragment(new Suivi1Fragment());
-                startActivity(new Intent(getActivity(),MainActivity.class));
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                Boolean backPrefs = prefs.getBoolean(PREFS_QUIZ_BACK,false);
+
+                if ((mParam2== "cigarette")&&(!backPrefs)){
+                    prefs.edit().putBoolean(PREFS_QUIZ_BACK, true).apply();
+                    ((MainActivity)getActivity()).replaceFragment(new RetourSmokingFragment());
+                }else if ((mParam2== "alcohol")&&(!backPrefs)){
+                    prefs.edit().putBoolean(PREFS_QUIZ_BACK, true).apply();
+                    ((MainActivity)getActivity()).replaceFragment(new RetourAlchoolFragment());
+                }else {
+                    startActivity(new Intent(getActivity(),MainActivity.class));
+                }
+               // startActivity(new Intent(getActivity(),MainActivity.class));
+
             }
         };
         handler.postDelayed(runnable, 5000);
