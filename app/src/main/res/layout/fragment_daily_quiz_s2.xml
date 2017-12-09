@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailySmokingQuiz.DailyQuizS2Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgroundlight"
+        >
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/monokuma"/>
+
+        <LinearLayout
+            android:id="@+id/contenuQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/question"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:text="How much cigarette did you smoke ?"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/m2_reponse1"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:inputType="number"
+                android:gravity="center"
+                android:hint="Number of cigarettes"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/m2_next"
+                android:layout_marginTop="40dp"
+                android:textSize="20dp"
+                android:text="n e x t"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

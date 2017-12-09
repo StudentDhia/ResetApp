@@ -38,5 +38,6 @@ dependencies {
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.3@aar'
+    compile 'com.github.lzyzsd:circleprogress:1.2.1'
     testCompile 'junit:junit:4.12'
 }

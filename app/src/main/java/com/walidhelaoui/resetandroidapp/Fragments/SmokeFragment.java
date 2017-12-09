@@ -79,6 +79,14 @@ public class SmokeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), SmokingChartActivity.class));
             }
         });
+
+        ImageView quizImg = (ImageView) view.findViewById(R.id.quizImg);
+        quizImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return view;
 
 
