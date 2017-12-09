@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.walidhelaoui.resetandroidapp.Entity.SmokeSavedMoney;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailySmokingQuiz.DailyQuizS1Fragment;
 import com.walidhelaoui.resetandroidapp.LoginActivity;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
@@ -84,7 +85,7 @@ public class SmokeFragment extends Fragment {
         quizImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ((MainActivity)getActivity()).replaceFragment(new DailyQuizS1Fragment());
             }
         });
         return view;

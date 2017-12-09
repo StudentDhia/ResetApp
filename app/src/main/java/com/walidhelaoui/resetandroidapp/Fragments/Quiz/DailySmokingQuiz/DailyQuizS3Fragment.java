@@ -27,7 +27,7 @@ public class DailyQuizS3Fragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private int mParam1;
-
+    private EditText et;
     public DailyQuizS3Fragment() {
         // Required empty public constructor
     }
@@ -67,15 +67,15 @@ public class DailyQuizS3Fragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EditText et = (EditText) view.findViewById(R.id.m3_reponse1);
+        et = (EditText) view.findViewById(R.id.m3_reponse1);
         Button next = (Button) view.findViewById(R.id.m3_next);
 
         // Added the cigarette's price
-        final int number = Integer.parseInt(et.getText().toString());
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int number = Integer.parseInt(et.getText().toString());
                 ((MainActivity)getActivity()).replaceFragment(DailyQuizS4Fragment.newInstance(mParam1,number));
             }
         });

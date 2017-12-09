@@ -18,6 +18,7 @@ import com.walidhelaoui.resetandroidapp.R;
  */
 public class DailyQuizS2Fragment extends Fragment {
 
+    private EditText et;
 
     public DailyQuizS2Fragment() {
         // Required empty public constructor
@@ -34,15 +35,15 @@ public class DailyQuizS2Fragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EditText et = (EditText) view.findViewById(R.id.m2_reponse1);
+        et = (EditText) view.findViewById(R.id.m2_reponse1);
         Button next = (Button) view.findViewById(R.id.m2_next);
 
         // Added the cigarette's number
-        final int number = Integer.parseInt(et.getText().toString());
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int number = Integer.parseInt(et.getText().toString());
                 ((MainActivity)getActivity()).replaceFragment(DailyQuizS3Fragment.newInstance(number));
             }
         });
