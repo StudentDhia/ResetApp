@@ -85,7 +85,10 @@ public class SmokeFragment extends Fragment {
         quizImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getContext(),"aa",Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).bottomBar.setVisibility(View.INVISIBLE);
                 ((MainActivity)getActivity()).replaceFragment(new DailyQuizS1Fragment());
+
             }
         });
         return view;

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler;
     TextView tv_email;
     public DrinkSavedMoney drinkSavedMoney;
-    BottomBar bottomBar;
+    public BottomBar bottomBar;
     public static final String PREFS_QUIZ = "prefs_quiz";
     private final Runnable m_Runnable = new Runnable()
     {
