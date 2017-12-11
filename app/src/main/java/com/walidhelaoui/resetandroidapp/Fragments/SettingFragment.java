@@ -55,38 +55,13 @@ public class SettingFragment extends Fragment {
         saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validate()){
                     setData();
-                }
             }
         });
 
 
 
         return view;
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String smokingPrice = (this.smokingPrice.getText().toString());
-        String drinkingPrice = (this.drinkingPrice.getText().toString());
-
-        try {
-            Float.valueOf(smokingPrice);
-        }catch (NumberFormatException e){
-            this.smokingPrice.setError("not a valid number");
-            valid = false;
-        }
-
-        try {
-            Float.valueOf(drinkingPrice);
-        }catch (NumberFormatException e){
-            this.drinkingPrice.setError("not a valid number");
-            valid = false;
-        }
-
-        return valid;
     }
 
     public void setData(){
