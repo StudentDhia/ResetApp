@@ -9,6 +9,10 @@
         icon="@drawable/ic_local_bar_black_24dp"
         title="Drink" />
     <tab
+        id="@+id/tab_game"
+        icon="@drawable/ic_touch_app_black_24dp"
+        title="Game" />
+    <tab
         id="@+id/tab_profile"
         icon="@drawable/ic_perm_identity_black_24dp"
         title="Profile" />

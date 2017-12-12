@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.DrinkFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.GameFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.QuizFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
@@ -106,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.tab_profile:
                         replaceFragment(new ProfileFragment());
+                        break;
+                    case R.id.tab_game:
+                        replaceFragment(new GameFragment());
                         break;
 
                 }
