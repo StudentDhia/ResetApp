@@ -34,6 +34,18 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/moneysaved" />
 
+        <ImageView
+            android:id="@+id/missionImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mission" />
+        <ImageView
+            android:id="@+id/trophyImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/trophy" />
     </LinearLayout>
 
     <RelativeLayout
@@ -64,33 +76,31 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_marginEnd="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="186dp"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView"
+            android:layout_above="@+id/textView7"
+            android:layout_marginBottom="87dp"
+            android:layout_toLeftOf="@+id/textView7"
+            android:layout_toStartOf="@+id/textView7"
             android:text="Statistics" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView3"
-            android:layout_centerHorizontal="true"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView"
             android:text="Quiz" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Saved Money"
             android:layout_alignBaseline="@+id/textView4"
             android:layout_alignBottom="@+id/textView4"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_marginLeft="19dp"
-            android:layout_marginStart="19dp" />
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:text="Saved Money" />
 
         <TextView
             android:id="@+id/textView7"
@@ -106,10 +116,31 @@
             android:id="@+id/savedMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="90dp"
-            android:text="999999"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="90dp"
+            android:text="999999" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_toRightOf="@+id/textView"
+            android:text="Missions" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView6"
+            android:layout_alignBottom="@+id/textView6"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:text="Trohpy" />
     </RelativeLayout>
 
 </FrameLayout>

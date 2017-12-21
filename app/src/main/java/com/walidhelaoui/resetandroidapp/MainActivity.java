@@ -1,5 +1,8 @@
 package com.walidhelaoui.resetandroidapp;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -23,6 +26,7 @@ import android.widget.Toast;
 
 import com.roughike.bottombar.OnTabSelectListener;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
+import com.walidhelaoui.resetandroidapp.Entity.SmokeSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.DrinkFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.GameFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
@@ -32,6 +36,8 @@ import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import com.roughike.bottombar.BottomBar;
+
+import java.util.Calendar;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler;
     TextView tv_email;
     public DrinkSavedMoney drinkSavedMoney;
+    public SmokeSavedMoney smokeSavedMoney;
     public BottomBar bottomBar;
     public static final String PREFS_QUIZ = "prefs_quiz";
     private final Runnable m_Runnable = new Runnable()
@@ -65,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 Boolean quizPrefs = prefs.getBoolean(PREFS_QUIZ,false);
                 if(quizPrefs){
                     toolbar.setVisibility(View.VISIBLE);
-                    replaceFragment(new SmokeFragment(MainActivity.this));
+                    replaceFragment(new SmokeFragment(smokeSavedMoney));
                 }else {
                     bottomBar.setVisibility(View.INVISIBLE);
                     toolbar.setVisibility(View.INVISIBLE);
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        motivationProgram1();
 
         this.mHandler = new Handler();
         this.mHandler.postDelayed(m_Runnable,3000);
@@ -88,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.contentDrawer);
         relativeLayout.setVisibility(View.INVISIBLE);
         drinkSavedMoney = new DrinkSavedMoney(this);
+        smokeSavedMoney = new SmokeSavedMoney(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setVisibility(View.INVISIBLE);
@@ -100,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(@IdRes int tabId) {
                 switch (tabId){
                     case R.id.tab_smoke:
-                        replaceFragment(new SmokeFragment(MainActivity.this));
+                        replaceFragment(new SmokeFragment(smokeSavedMoney));
                         break;
                     case R.id.tab_drink:
                         replaceFragment(new DrinkFragment(drinkSavedMoney));
@@ -174,5 +183,74 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.contentDrawer, fragment);
         ft.commit();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    public void createNotification2(String msg) {
+        // Prepare intent which is triggered if the
+        // notification is selected
+        Intent notificationIntent  = new Intent(this, MainActivity.class);
+
+        //Uri alarmSound = getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //Object mNotificationManager = getApplication().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationIntent .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent pIntent = PendingIntent.getActivity(this,0 , notificationIntent , PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Build notification
+        // Actions are just fake
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle("NOTIFICATION")
+                .setContentText(msg).setSmallIcon(R.drawable.notif_icone)
+                .setContentIntent(pIntent)
+                .addAction(R.drawable.notif_icone, "quiz time", pIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
+    }
+
+    public void createNotification(String msg) {
+
+        //Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), getIntent(), 0);
+
+        // Build notification
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle("NOTIFICATION")
+                .setContentText(msg).setSmallIcon(R.drawable.notif_icone).build();
+        //.setContentIntent(pIntent)
+        //.addAction(R.drawable.notif_icone, "And more", pIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
+    }
+
+    public void motivationProgram1(){
+
+        int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+
+        switch (hour)
+        {
+            case 9:
+                createNotification2("Let's go for another no smoking day !");
+                break;
+            case 12:
+                createNotification("no smoking breaks !");
+                break;
+            case 10:
+                createNotification2("Did you smoke today ?");
+                break;
+            default:
+        }
     }
 }

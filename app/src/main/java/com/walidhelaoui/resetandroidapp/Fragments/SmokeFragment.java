@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.walidhelaoui.resetandroidapp.Entity.SmokeSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailySmokingQuiz.DailyQuizS1Fragment;
+import com.walidhelaoui.resetandroidapp.Fragments.Trophys.TrophysFragment;
 import com.walidhelaoui.resetandroidapp.LoginActivity;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
@@ -42,9 +43,9 @@ public class SmokeFragment extends Fragment {
 
     public SmokeSavedMoney smokeSavedMoney;
 
-    public SmokeFragment(Context context) {
+    public SmokeFragment(SmokeSavedMoney smokeSavedMoney) {
         // Required empty public constructor
-         smokeSavedMoney = new SmokeSavedMoney(context);
+         this.smokeSavedMoney = smokeSavedMoney;
     }
 
 
@@ -91,6 +92,25 @@ public class SmokeFragment extends Fragment {
 
             }
         });
+
+        ImageView missionsImg = (ImageView) view.findViewById(R.id.missionImg);
+        missionsImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(new MissionsFragment());
+                ((MainActivity)getActivity()).bottomBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        ImageView trophyImg = (ImageView) view.findViewById(R.id.trophyImg);
+        trophyImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(new TrophysFragment());
+                ((MainActivity)getActivity()).bottomBar.setVisibility(View.INVISIBLE);
+            }
+        });
+
         return view;
 
 
