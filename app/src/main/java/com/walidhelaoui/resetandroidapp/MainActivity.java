@@ -89,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set default values of settings
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String notify = prefs.getString("pref_notification_time","");
+        Log.e(TAG+" Pref",notify);
         motivationProgram1();
 
         this.mHandler = new Handler();
