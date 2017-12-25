@@ -32,6 +32,7 @@ import com.walidhelaoui.resetandroidapp.Fragments.GameFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.QuizFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.SettingsFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
@@ -146,7 +147,11 @@ public class MainActivity extends AppCompatActivity {
                         bottomBar.setVisibility(View.VISIBLE);
                         break;
                     case R.id.settings:
-                        replaceFragment(new SettingFragment());
+                       // replaceFragment(new SettingFragment());
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.contentDrawer, new SettingsFragment())
+                                .commit();
+
                         drawerLayout.closeDrawers();
                         bottomBar.setVisibility(View.INVISIBLE);
                         break;

@@ -3,7 +3,6 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_there">Hello there !</string>
     <string name="today">today</string>
@@ -25,4 +24,30 @@
     <string name="do_you_smoke_even_if_you_are_sick_in_bed_most_of_the_day">Do you smoke even if you are sick in bed most of the day ?</string>
     <string name="how_often_do_you_have_a_drink_containing_alcohol">How often do you have a drink containing alcohol ?</string>
     <string name="do_you_drink_too">Do you drink too ?</string>
+
+    <string-array name="pref_notification_time">
+        <item>7PM</item>
+        <item>8PM</item>
+        <item>9PM</item>
+        <item>10PM</item>
+        <item>11PM</item>
+        <item>12AM</item>
+        <item>1AM</item>
+        <item>2AM</item>
+        <item>3AM</item>
+        <item>4AM</item>
+
+    </string-array>
+    <string-array name="pref_notification_time_values">
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>00</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>

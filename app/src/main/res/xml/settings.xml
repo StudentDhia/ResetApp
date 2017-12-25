@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+            android:title="Notification"
+            android:key="pref_key_storage_settings">
+            <CheckBoxPreference
+                android:key="pref_key_auto_delete"
+                android:summary="Active OR Disactive the notification from here"
+                android:title="notification"
+                android:defaultValue="false"
+             />
+
+            <ListPreference
+                android:inputType="time"
+                android:entries="@array/pref_notification_time"
+                android:entryValues="@array/pref_notification_time_values"
+                android:key="pref_key_sms_delete_limit"
+                android:dependency="pref_key_auto_delete"
+                android:summary="Set the push notification time"
+                android:title="Notification time"
+                />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
+        android:title="Saved Money Parameters"
+        android:key="pref_key_st_settings">
+        <EditTextPreference
+            android:inputType="number"
+            android:key="pref_key_sms_delete_limit"
+            android:summary="Set the Alcohol Money you daily spend"
+            android:title="Alcohol Money"
+            />
+            <EditTextPreference
+                android:inputType="number"
+                android:key="pref_key_sms_delete_limit"
+                android:summary="Set the Smoking Money you daily spend"
+                android:title="Smoking Money"
+                />
+    </PreferenceCategory>
+    </PreferenceScreen>
