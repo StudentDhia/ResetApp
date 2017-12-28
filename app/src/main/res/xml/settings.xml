@@ -6,7 +6,7 @@
             <CheckBoxPreference
                 android:key="pref_notification"
                 android:summary="you can activate or deactivate the notifications from here "
-                android:title="notification"
+                android:title="Notification"
                 android:defaultValue="true"
              />
 
@@ -15,7 +15,7 @@
                 android:entries="@array/pref_notification_time"
                 android:entryValues="@array/pref_notification_time_values"
                 android:key="pref_notification_time"
-                android:dependency="pref_key_auto_delete"
+                android:dependency="pref_notification"
                 android:summary="Set the push notification time"
                 android:title="Notification time"
                 android:defaultValue="8"
