@@ -39,5 +39,19 @@ dependencies {
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.3@aar'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.dynamitechetan.flowinggradient:flowinggradient:1.1'
+    compile 'com.github.thunderrise:android-TNRAnimationHelper:-SNAPSHOT'
+    compile 'pl.bclogic:pulsator4droid:1.0.3'
+    compile 'cn.fanrunqi:waveprogress:1.0.1'
+    compile 'com.github.elevenetc:badgeview:v1.0.0'
+    compile 'com.vstechlab.easyfonts:easyfonts:1.0.0'
+    compile 'com.labo.kaji:fragmentanimations:0.1.1'
+    compile "com.hanks:htextview-base:0.1.2"
+    compile "com.hanks:htextview-line:0.1.2"
+    compile 'jp.wasabeef:blurry:2.1.1'
+
     testCompile 'junit:junit:4.12'
 }
