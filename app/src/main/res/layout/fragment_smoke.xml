@@ -9,138 +9,184 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:translationZ="-1dp">
 
-        <ImageView
-            android:id="@+id/charts"
+        <su.levenetc.android.badgeview.BadgeView
+            android:id="@+id/badgeMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/graph" />
+            android:layout_gravity="left"
+            app:badgeText="    "
+            app:badgeTextSize="14dp"/>
 
-        <ImageView
-            android:id="@+id/quizImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/clock1" />
-
-        <ImageView
-            android:id="@+id/savedMoneyImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/moneysaved" />
-
-        <ImageView
-            android:id="@+id/missionImg"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/mission" />
-        <ImageView
-            android:id="@+id/trophyImg"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/trophy" />
     </LinearLayout>
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:translationZ="-2dp"
+        android:background="@drawable/backgroundlight">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="92dp"
+        <pl.bclogic.pulsator4droid.library.PulsatorLayout
+            android:id="@+id/pulsator"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Welcome!"
-            android:textSize="30sp" />
+            app:pulse_count="10"
+            app:pulse_duration="3000"
+            app:pulse_repeat="0"
+            app:pulse_color="#990033"
+            app:pulse_startFromScratch="false"
+            app:pulse_interpolator="Linear">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:text="Smoking Menu" />
+        </pl.bclogic.pulsator4droid.library.PulsatorLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textView7"
-            android:layout_marginBottom="87dp"
-            android:layout_toLeftOf="@+id/textView7"
-            android:layout_toStartOf="@+id/textView7"
-            android:text="Statistics" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView3"
-            android:layout_alignBottom="@+id/textView3"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView"
-            android:text="Quiz" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:rotation="45">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView4"
-            android:layout_alignBottom="@+id/textView4"
-            android:layout_alignEnd="@+id/textView2"
-            android:layout_alignRight="@+id/textView2"
-            android:text="Saved Money" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="20">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/savedMoney"
-            android:layout_alignBottom="@+id/savedMoney"
-            android:layout_toLeftOf="@+id/textView2"
-            android:layout_toStartOf="@+id/textView2"
-            android:text="You Saved :" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/savedMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="90dp"
-            android:text="999999" />
+                <ImageView
+                    android:id="@+id/redbar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/redbar3"/>
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textView5"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_toRightOf="@+id/textView"
-            android:text="Missions" />
+                <ImageView
+                    android:id="@+id/redbarA1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/redbar3"/>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/Welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome dude"
+                    android:textSize="25dp"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+                </TextView>
+                <TextView
+                    android:id="@+id/Welcome2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome dude"
+                    android:textSize="25dp"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+                </TextView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/redbar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/redbar3"/>
+                <ImageView
+                    android:id="@+id/redbarA2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/redbar3"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView6"
-            android:layout_alignBottom="@+id/textView6"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:text="Trohpy" />
-    </RelativeLayout>
+            android:layout_weight="50"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/smoking_savedMoneyImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon2_t"/>
+
+                <LinearLayout
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/moneySaved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="30dp"
+                        android:layout_gravity="center"
+                        android:rotation="-45"
+                        android:textColor="#000000"
+                        android:text="48$"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/smoking_charts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon3_t"/>
+
+                <ImageView
+                    android:id="@+id/smoking_quizImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon1_t"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
