@@ -14,7 +14,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/lung2" />
+            android:background="@drawable/lungs1" />
 
         <LinearLayout
             android:id="@+id/infosLungs"
@@ -56,7 +56,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/infosLungs"
             android:layout_marginTop="20dp">
 
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
-                android:background="@drawable/bubble2"/>
+                android:background="@drawable/bubble3"/>
 
         </LinearLayout>
 
@@ -80,6 +80,7 @@
             android:layout_alignParentBottom="true">
 
             <ImageView
+                android:id="@+id/dailyKuma4"
                 android:layout_width="100dp"
                 android:layout_height="110dp"
                 android:background="@drawable/monokuma"/>

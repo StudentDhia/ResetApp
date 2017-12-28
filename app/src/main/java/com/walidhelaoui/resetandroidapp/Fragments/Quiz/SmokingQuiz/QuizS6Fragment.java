@@ -8,11 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 
+import com.labo.kaji.fragmentanimations.CubeAnimation;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.ScoreFragment;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
+
+import static com.daimajia.androidanimations.library.BaseViewAnimator.DURATION;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,5 +94,10 @@ public class QuizS6Fragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return CubeAnimation.create(CubeAnimation.RIGHT, enter, DURATION);
     }
 }

@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.appolica.flubber.Flubber;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 
@@ -37,6 +39,14 @@ public class DailyQuizS2Fragment extends Fragment {
 
         et = (EditText) view.findViewById(R.id.m2_reponse1);
         Button next = (Button) view.findViewById(R.id.m2_next);
+        ImageView kuma = (ImageView) view.findViewById(R.id.dailyKuma2);
+
+        Flubber.with()
+                .animation(Flubber.AnimationPreset.SLIDE_UP) // Slide up animation
+                .repeatCount(0)                              // Repeat once
+                .duration(1000)                              // Last for 1000 milliseconds(1 second)
+                .createFor(kuma)                             // Apply it to the view
+                .start();                                    // Start it now
 
         // Added the cigarette's number
 

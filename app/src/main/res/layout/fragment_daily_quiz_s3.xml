@@ -10,6 +10,7 @@
         android:background="@drawable/backgroundlight">
 
         <ImageView
+            android:id="@+id/dailyKuma3"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentBottom="true"
