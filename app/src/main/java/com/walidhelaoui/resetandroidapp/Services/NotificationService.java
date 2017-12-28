@@ -104,4 +104,24 @@ public class NotificationService extends Service {
         notificationManager.notify(0, noti);
 
     }
+
+    public void createNotificationImage(String msg,int iconeImage, Intent intent) {
+
+        //Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+
+        // Build notification
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle("NOTIFICATION")
+                .setContentText(msg).setSmallIcon(iconeImage).build();
+        //.setContentIntent(pIntent)
+        //.addAction(R.drawable.notif_icone, "And more", pIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
+    }
 }
