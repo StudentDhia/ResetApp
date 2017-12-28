@@ -10,6 +10,7 @@
         android:background="@drawable/backgroundlight">
 
         <ImageView
+            android:id="@+id/Quiz0kuma"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentBottom="true"

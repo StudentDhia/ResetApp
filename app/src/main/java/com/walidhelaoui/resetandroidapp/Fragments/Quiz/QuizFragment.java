@@ -8,8 +8,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appolica.flubber.Flubber;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.walidhelaoui.resetandroidapp.MainActivity;
@@ -21,6 +23,8 @@ import com.walidhelaoui.resetandroidapp.R;
 public class QuizFragment extends Fragment {
 
     private TextView message;
+    private ImageView kuma;
+
     public QuizFragment() {
         // Required empty public constructor
     }
@@ -38,10 +42,18 @@ public class QuizFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         message = (TextView) view.findViewById(R.id.msgQuiz);
+        kuma = (ImageView) view.findViewById(R.id.Quiz0kuma);
 
         YoYo.with(Techniques.FlipInX)
                 .duration(1000)
                 .playOn(message);
+
+        Flubber.with()
+                .animation(Flubber.AnimationPreset.SLIDE_UP) // Slide up animation
+                .repeatCount(0)                              // Repeat once
+                .duration(1000)                              // Last for 1000 milliseconds(1 second)
+                .createFor(kuma)                             // Apply it to the view
+                .start();                                    // Start it now
 
 
         Handler handler = new Handler();
@@ -65,6 +77,7 @@ public class QuizFragment extends Fragment {
         };
 
         handler.postDelayed(runnable, 3000);
+
 
 
     }
