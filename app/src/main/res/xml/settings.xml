@@ -4,10 +4,10 @@
             android:title="Notification"
             android:key="pref_key_storage_settings">
             <CheckBoxPreference
-                android:key="pref_key_auto_delete"
-                android:summary="Active OR Disactive the notification from here"
+                android:key="pref_notification"
+                android:summary="you can activate or deactivate the notifications from here "
                 android:title="notification"
-                android:defaultValue="false"
+                android:defaultValue="true"
              />
 
             <ListPreference

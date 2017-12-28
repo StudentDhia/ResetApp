@@ -91,10 +91,16 @@ public class MainActivity extends AppCompatActivity {
 
         // set default values of settings
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String notify = prefs.getString("pref_notification_time","");
-        Log.e(TAG+" Pref",notify);
-        motivationProgram1();
+        // get the notification time
+        String notification_time = prefs.getString("pref_notification_time","");
+        // get the state of the notifications
+        Boolean notification = prefs.getBoolean("pref_notification",true);
+        Log.e(TAG+" notif",notification.toString());
+        if (notification){
+            motivationProgram1(notification_time);
+        }
 
         this.mHandler = new Handler();
         this.mHandler.postDelayed(m_Runnable,3000);
@@ -245,22 +251,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void motivationProgram1(){
+    public void motivationProgram1(String notification_time){
 
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 
         switch (hour)
         {
             case 9:
-                createNotification2("Let's go for another no smoking day !");
+                createNotification("Let's go for another no smoking day !");
                 break;
             case 12:
                 createNotification("no smoking breaks !");
                 break;
-            case 10:
-                createNotification2("Did you smoke today ?");
-                break;
             default:
+        }
+
+        try {
+            int time = Integer.getInteger(notification_time);
+            if (hour==time){
+                createNotification2("Did you smoke today ?");
+            }
+        }catch (Exception e){
+            if (hour==8){
+                createNotification2("Did you smoke today ?");
+            }
         }
     }
 }
