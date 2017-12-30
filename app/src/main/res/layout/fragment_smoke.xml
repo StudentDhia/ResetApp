@@ -126,8 +126,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="400dp"
+            android:layout_height="300dp"
             android:layout_weight="50"
             android:gravity="center"
             android:orientation="vertical">
@@ -140,8 +140,8 @@
 
                 <ImageView
                     android:id="@+id/smoking_savedMoneyImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/icon2_t"/>
 
                 <LinearLayout
@@ -171,14 +171,14 @@
 
                 <ImageView
                     android:id="@+id/smoking_charts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/icon3_t"/>
 
                 <ImageView
                     android:id="@+id/smoking_quizImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/icon1_t"/>
 
