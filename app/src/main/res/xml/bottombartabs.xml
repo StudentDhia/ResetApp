@@ -13,6 +13,10 @@
         icon="@drawable/ic_touch_app_black_24dp"
         title="Game" />
     <tab
+        id="@+id/tab_trophy"
+        icon="@drawable/ic_stars_black_24dp"
+        title="Trophy" />
+    <tab
         id="@+id/tab_profile"
         icon="@drawable/ic_perm_identity_black_24dp"
         title="Profile" />

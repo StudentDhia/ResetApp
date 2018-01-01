@@ -39,10 +39,26 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistreActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SmokingStatisticsActivity" />
-        <activity android:name=".DrinkingStatisticsActivity" />
-        <activity android:name=".SmokingChartActivity" />
-        <activity android:name=".DrinkingChartActivity"></activity>
+        <activity android:name=".SmokingStatisticsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".DrinkingStatisticsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".SmokingChartActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".DrinkingChartActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

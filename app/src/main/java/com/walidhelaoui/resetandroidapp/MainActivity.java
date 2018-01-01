@@ -34,6 +34,7 @@ import com.walidhelaoui.resetandroidapp.Fragments.Quiz.QuizFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingsFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SmokeFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.Trophys.TrophysFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import com.roughike.bottombar.BottomBar;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_email;
     public DrinkSavedMoney drinkSavedMoney;
     public SmokeSavedMoney smokeSavedMoney;
-    public BottomBar bottomBar;
+    public static BottomBar bottomBar;
     public static final String PREFS_QUIZ = "prefs_quiz";
     private final Runnable m_Runnable = new Runnable()
     {
@@ -132,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.tab_game:
                         replaceFragment(new GameFragment());
                         break;
-
+                    case R.id.tab_trophy:
+                        replaceFragment(new TrophysFragment());
+                        break;
                 }
             }
         });
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
     public void replaceFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.contentDrawer, fragment);
+        ft.replace(R.id.contentDrawer, fragment).addToBackStack(null);
         ft.commit();
     }
 

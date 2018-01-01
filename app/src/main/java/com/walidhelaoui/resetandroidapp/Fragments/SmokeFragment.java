@@ -85,8 +85,14 @@ public class SmokeFragment extends Fragment {
         final ImageView redbar2A = (ImageView) view.findViewById(R.id.redbarA2);
 
         final TextView money = (TextView) view.findViewById(R.id.moneySaved);
-        money.setText(smokeSavedMoney.getSavedMoney()+"$");
-
+        ValueAnimator animatorSavedMoney = ValueAnimator.ofInt(0, smokeSavedMoney.getSavedMoney());
+        animatorSavedMoney.setDuration(2000);
+        animatorSavedMoney.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                money.setText(animation.getAnimatedValue().toString()+"$");
+            }
+        });
+        animatorSavedMoney.start();
 
 
         final BadgeView badgeView = (BadgeView) view.findViewById(R.id.badgeMessage);
@@ -154,6 +160,7 @@ public class SmokeFragment extends Fragment {
         quizImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity.bottomBar.setVisibility(View.GONE);
                 ((MainActivity)getActivity()).replaceFragment(new DailyQuizS1Fragment());
 
             }
@@ -163,5 +170,9 @@ public class SmokeFragment extends Fragment {
 
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.bottomBar.setVisibility(View.VISIBLE);
+    }
 }

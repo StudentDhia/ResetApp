@@ -40,12 +40,6 @@ public class SmokingStatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_smoking_statistics);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Smoking Statistics");
-        toolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

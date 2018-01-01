@@ -77,7 +77,7 @@ public class TrophysFragment extends Fragment {
 
             img.setImageResource(R.drawable.trophy);
             NotificationService ns = new NotificationService();
-            ns.createNotificationImage(msg,R.drawable.trophy, getActivity().getIntent());
+            //ns.createNotificationImage(msg,R.drawable.trophy, getActivity().getIntent());
             //FAUT CHANGER CA POUR QUE LA NOTIFICATION SE LANCE A TOUT MOMENT
         }
 
@@ -95,7 +95,7 @@ public class TrophysFragment extends Fragment {
 
             img.setImageResource(R.drawable.argent);
             NotificationService ns = new NotificationService();
-            ns.createNotificationImage(msg, R.drawable.argent, getActivity().getIntent());
+            //ns.createNotificationImage(msg, R.drawable.argent, getActivity().getIntent());
         }
 
         img.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +112,7 @@ public class TrophysFragment extends Fragment {
 
             img.setImageResource(R.drawable.bronze);
             NotificationService ns = new NotificationService();
-            ns.createNotificationImage(msg, R.drawable.bronze,getActivity().getIntent());
+           // ns.createNotificationImage(msg, R.drawable.bronze,getActivity().getIntent());
         }
 
         img.setOnClickListener(new View.OnClickListener() {

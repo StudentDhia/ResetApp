@@ -34,12 +34,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            app:pulse_color="#990033"
             app:pulse_count="10"
             app:pulse_duration="3000"
+            app:pulse_interpolator="Linear"
             app:pulse_repeat="0"
-            app:pulse_color="#990033"
-            app:pulse_startFromScratch="false"
-            app:pulse_interpolator="Linear">
+            app:pulse_startFromScratch="false">
 
         </pl.bclogic.pulsator4droid.library.PulsatorLayout>
 
@@ -145,7 +145,7 @@
                     android:src="@drawable/icon2_t"/>
 
                 <LinearLayout
-                    android:layout_width="110dp"
+                    android:layout_width="130dp"
                     android:layout_height="match_parent">
 
                     <TextView
@@ -153,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:textSize="30dp"
+                        android:textSize="50dp"
                         android:layout_gravity="center"
                         android:rotation="-45"
                         android:textColor="#000000"
