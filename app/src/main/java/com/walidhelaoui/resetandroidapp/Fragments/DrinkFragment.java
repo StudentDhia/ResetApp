@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.walidhelaoui.resetandroidapp.DrinkingChartActivity;
 import com.walidhelaoui.resetandroidapp.DrinkingStatisticsActivity;
 import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
+import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailyDrinkingQuiz.DailyQuizA1Fragment;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailySmokingQuiz.DailyQuizS1Fragment;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
@@ -163,7 +164,7 @@ public class DrinkFragment extends Fragment {
         quizImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(new DailyQuizS1Fragment());
+                ((MainActivity)getActivity()).replaceFragment(new DailyQuizA1Fragment());
 
             }
         });
