@@ -101,13 +101,13 @@ public class DailyQuizA4Fragment extends Fragment {
         ImageView kuma = (ImageView) view.findViewById(R.id.dailyKuma4);
         ImageView lungs = (ImageView) view.findViewById(R.id.lung2);
 
-        Flubber.with()
+   /*     Flubber.with()
                 .animation(Flubber.AnimationPreset.SLIDE_UP) // Slide up animation
                 .repeatCount(0)                              // Repeat once
                 .duration(1000)                              // Last for 1000 milliseconds(1 second)
                 .createFor(kuma)                             // Apply it to the view
                 .start();                                    // Start it now
-
+*/
         if (arc1.getProgress()<10){
             lungs.setImageResource(R.drawable.lungs1);
 

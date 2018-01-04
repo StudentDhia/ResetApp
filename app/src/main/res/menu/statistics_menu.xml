@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/reverse"
+        android:title="Reverse"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/hideRest"
+        android:title="Hide RestDay"
+        app:showAsAction="never" />
+    <item android:id="@+id/sortMax"
+        android:title="Sorted by Max"
+        app:showAsAction="never" />
+    <item android:id="@+id/sortMin"
+        android:title="Sorted by Min"
+        app:showAsAction="never" />
+</menu>

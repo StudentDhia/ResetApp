@@ -56,7 +56,7 @@ public class DailyQuizA2Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int number = Integer.parseInt(et.getText().toString());
-                ((MainActivity)getActivity()).replaceFragment(DailyQuizS3Fragment.newInstance(number));
+                ((MainActivity)getActivity()).replaceFragment(DailyQuizA3Fragment.newInstance(number));
             }
         });
     }

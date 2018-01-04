@@ -5,11 +5,21 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.walidhelaoui.resetandroidapp.Controller.SmokeAdapter;
+import com.walidhelaoui.resetandroidapp.Entity.SmokingStatistics;
 import com.walidhelaoui.resetandroidapp.utils.SmokingDataSource;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import static com.walidhelaoui.resetandroidapp.utils.SmokingDataSource.smoking;
 
 public class SmokingStatisticsActivity extends AppCompatActivity {
 
@@ -24,9 +34,9 @@ public class SmokingStatisticsActivity extends AppCompatActivity {
         {
             SmokingStatisticsActivity.this.mHandler.postDelayed(m_Runnable, 3000);
 
-            if (!SmokingDataSource.smoking.isEmpty()){
+            if (!smoking.isEmpty()){
                 progressDialog.hide();
-                SmokeAdapter adapter = new SmokeAdapter(SmokingStatisticsActivity.this, SmokingDataSource.smoking);
+                SmokeAdapter adapter = new SmokeAdapter(SmokingStatisticsActivity.this, smoking);
                 listView.setAdapter(adapter);
                 mHandler.removeCallbacksAndMessages(null);
             }
@@ -55,9 +65,75 @@ public class SmokingStatisticsActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.ListView);
         SmokingDataSource.setSmoke(this);
-        SmokeAdapter adapter = new SmokeAdapter(this, SmokingDataSource.smoking);
+        SmokeAdapter adapter = new SmokeAdapter(this, smoking);
         listView.setAdapter(adapter);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.statistics_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        SmokeAdapter adapter;
+        List<SmokingStatistics> list = SmokingDataSource.smoking;
+
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.sortMax:
+                Collections.sort(list, new Comparator<SmokingStatistics>() {
+                    @Override
+                    public int compare(SmokingStatistics o1, SmokingStatistics o2) {
+                        if (o1.getNumber()>o2.getNumber()){
+                            return -1;
+                        }else if (o1.getNumber()<o2.getNumber()){
+                            return 1;
+                        }else {
+                            return 0;
+                        }
+                    }
+                });
+                adapter = new SmokeAdapter(this, list);
+                listView.setAdapter(adapter);
+                return true;
+            case R.id.sortMin:
+                Collections.sort(list, new Comparator<SmokingStatistics>() {
+                    @Override
+                    public int compare(SmokingStatistics o1, SmokingStatistics o2) {
+                        if (o1.getNumber()>o2.getNumber()){
+                            return 1;
+                        }else if (o1.getNumber()<o2.getNumber()){
+                            return -1;
+                        }else {
+                            return 0;
+                        }
+                    }
+                });
+                adapter = new SmokeAdapter(this, list);
+                listView.setAdapter(adapter);
+                return true;
+            case R.id.reverse:
+                Collections.reverse(list);
+                adapter = new SmokeAdapter(this, list);
+                listView.setAdapter(adapter);
+                return true;
+            case R.id.hideRest:
+                List<SmokingStatistics> newList= new ArrayList<>();
+                for (SmokingStatistics statistics : list){
+                    if (statistics.getNumber()>0){
+                        newList.add(statistics);
+                    }
+                }
+                adapter = new SmokeAdapter(this, newList);
+                listView.setAdapter(adapter);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

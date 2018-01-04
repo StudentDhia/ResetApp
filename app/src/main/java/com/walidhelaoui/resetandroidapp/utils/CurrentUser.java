@@ -1,7 +1,9 @@
 package com.walidhelaoui.resetandroidapp.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,7 +28,7 @@ public class CurrentUser {
     public static final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/user";
     private static final String TAG = "CurrentUser";
     public static Compte user = new Compte();
-    public CurrentUser(Context context) {
+    public CurrentUser(final Context context) {
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
         StringRequest postRequest = new StringRequest(Request.Method.POST, ServerURL, // the request body, which is a JsonObject otherwise null
                 new Response.Listener<String>() {
@@ -51,7 +53,8 @@ public class CurrentUser {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Toast.makeText(context,"User information does not load please check your connection",Toast.LENGTH_SHORT).show();
+                        context.startActivity(new Intent(context,LoginActivity.class));
                     }
                 }
         ) {

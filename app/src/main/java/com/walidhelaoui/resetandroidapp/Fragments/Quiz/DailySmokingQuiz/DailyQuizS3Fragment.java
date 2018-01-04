@@ -76,7 +76,7 @@ public class DailyQuizS3Fragment extends Fragment {
                 .animation(Flubber.AnimationPreset.SLIDE_UP) // Slide up animation
                 .repeatCount(1)                              // Repeat once
                 .duration(1000)                              // Last for 1000 milliseconds(1 second)
-                .createFor(view)                             // Apply it to the view
+                .createFor(kuma)                             // Apply it to the view
                 .start();                                    // Start it now
 
         // Added the cigarette's price

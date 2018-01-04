@@ -164,6 +164,7 @@ public class DrinkFragment extends Fragment {
         quizImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity.bottomBar.setVisibility(View.GONE);
                 ((MainActivity)getActivity()).replaceFragment(new DailyQuizA1Fragment());
 
             }
@@ -173,4 +174,9 @@ public class DrinkFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.bottomBar.setVisibility(View.VISIBLE);
+    }
 }
