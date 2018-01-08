@@ -23,6 +23,7 @@ import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 import com.walidhelaoui.resetandroidapp.SmokingChartActivity;
 import com.walidhelaoui.resetandroidapp.SmokingStatisticsActivity;
+import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 import su.levenetc.android.badgeview.BadgeView;
@@ -87,6 +88,9 @@ public class DrinkFragment extends Fragment {
         final TextView welcome2 = (TextView) view.findViewById(R.id.Welcome2);
         final ImageView redbar1A = (ImageView) view.findViewById(R.id.redbarA1);
         final ImageView redbar2A = (ImageView) view.findViewById(R.id.redbarA2);
+
+        welcome.setText("welcome "+ CurrentUser.user.getUsername());
+        welcome2.setText("welcome "+CurrentUser.user.getUsername());
 
         final TextView money = (TextView) view.findViewById(R.id.moneySaved);
         ValueAnimator animatorSavedMoney = ValueAnimator.ofInt(0, drinkSavedMoney.getSavedMoney());

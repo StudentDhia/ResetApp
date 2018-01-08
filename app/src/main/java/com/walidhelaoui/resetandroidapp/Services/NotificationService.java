@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.RequiresApi;
@@ -89,10 +91,12 @@ public class NotificationService extends Service {
 
         //Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         // Build notification
         Notification noti = new Notification.Builder(this)
                 .setContentTitle("NOTIFICATION")
+                .setSound(alarmSound)
                 .setContentText(msg).setSmallIcon(R.drawable.notif_icone).build();
         //.setContentIntent(pIntent)
         //.addAction(R.drawable.notif_icone, "And more", pIntent).build();
@@ -109,9 +113,11 @@ public class NotificationService extends Service {
 
         //Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         // Build notification
         Notification noti = new Notification.Builder(this)
+                .setSound(alarmSound)
                 .setContentTitle("NOTIFICATION")
                 .setContentText(msg).setSmallIcon(iconeImage).build();
         //.setContentIntent(pIntent)

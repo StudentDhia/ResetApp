@@ -148,8 +148,8 @@ public class DailyQuizA4Fragment extends Fragment {
             public void run() {
 
                 if(arc1.getProgress() > 15){
-                    infos.setText("The nicotine level in your blood is getting too high. " +
-                            "Let's stop smoking now. ou're not planning to die now, right ?");
+                    infos.setText("You're drinking too high. " +
+                            "Please don't ruin yourself");
                 }
 
                 Handler handler = new Handler();

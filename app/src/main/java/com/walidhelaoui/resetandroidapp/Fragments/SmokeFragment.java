@@ -84,6 +84,8 @@ public class SmokeFragment extends Fragment {
         final ImageView redbar1A = (ImageView) view.findViewById(R.id.redbarA1);
         final ImageView redbar2A = (ImageView) view.findViewById(R.id.redbarA2);
 
+        welcome.setText("welcome "+CurrentUser.user.getUsername());
+        welcome2.setText("welcome "+CurrentUser.user.getUsername());
         final TextView money = (TextView) view.findViewById(R.id.moneySaved);
         ValueAnimator animatorSavedMoney = ValueAnimator.ofInt(0, smokeSavedMoney.getSavedMoney());
         animatorSavedMoney.setDuration(2000);

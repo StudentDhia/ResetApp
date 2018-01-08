@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
@@ -29,6 +31,7 @@ import com.walidhelaoui.resetandroidapp.Entity.DrinkSavedMoney;
 import com.walidhelaoui.resetandroidapp.Entity.SmokeSavedMoney;
 import com.walidhelaoui.resetandroidapp.Fragments.DrinkFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.GameFragment;
+import com.walidhelaoui.resetandroidapp.Fragments.MissionsFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.ProfileFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.QuizFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.SettingFragment;
@@ -154,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (id){
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_SHORT).show();
                         //replaceFragment(new SmokeFragment(MainActivity.this));
                         startActivity(new Intent(MainActivity.this,MainActivity.class));
                         drawerLayout.closeDrawers();
@@ -168,6 +170,12 @@ public class MainActivity extends AppCompatActivity {
 
                         drawerLayout.closeDrawers();
                         bottomBar.setVisibility(View.INVISIBLE);
+                        break;
+                    case R.id.missions:
+                        //replaceFragment(new SmokeFragment(MainActivity.this));
+                        replaceFragment(new MissionsFragment());
+                        drawerLayout.closeDrawers();
+                        bottomBar.setVisibility(View.VISIBLE);
                         break;
                     case R.id.logout:
                         startActivity(new Intent(MainActivity.this,LoginActivity.class));
@@ -217,11 +225,13 @@ public class MainActivity extends AppCompatActivity {
         notificationIntent .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         PendingIntent pIntent = PendingIntent.getActivity(this,0 , notificationIntent , PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         // Build notification
         // Actions are just fake
         Notification noti = new Notification.Builder(this)
                 .setContentTitle("NOTIFICATION")
+                .setSound(alarmSound)
                 .setContentText(msg).setSmallIcon(R.drawable.notif_icone)
                 .setContentIntent(pIntent)
                 .addAction(R.drawable.notif_icone, "quiz time", pIntent).build();
@@ -238,10 +248,32 @@ public class MainActivity extends AppCompatActivity {
 
         //Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), getIntent(), 0);
-
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         // Build notification
         Notification noti = new Notification.Builder(this)
                 .setContentTitle("NOTIFICATION")
+                .setSound(alarmSound)
+                .setContentText(msg).setSmallIcon(R.drawable.notif_icone).build();
+        //.setContentIntent(pIntent)
+        //.addAction(R.drawable.notif_icone, "And more", pIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
+    }
+
+    public void createNotificationT(String msg) {
+
+        //Intent intent = new Intent(this, MainActivity.class);
+        //PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), getParentActivityIntent(), 0);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        // Build notification
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle("Trophy")
+                .setSound(alarmSound)
                 .setContentText(msg).setSmallIcon(R.drawable.notif_icone).build();
         //.setContentIntent(pIntent)
         //.addAction(R.drawable.notif_icone, "And more", pIntent).build();
@@ -279,5 +311,32 @@ public class MainActivity extends AppCompatActivity {
                 createNotification2("Did you smoke today ?");
             }
         }
+    }
+    public void createNotificationTrophy(String msg, String titre) {
+        // Prepare intent which is triggered if the
+        // notification is selected
+        Intent notificationIntent  = new Intent(this, MainActivity.class);
+
+        //Uri alarmSound = getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //Object mNotificationManager = getApplication().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationIntent .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent pIntent = PendingIntent.getActivity(this,0 , notificationIntent , PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        // Build notification
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle(titre)
+                .setSound(alarmSound)
+                .setContentText(msg).setSmallIcon(R.drawable.notif_icone)
+                .setContentIntent(pIntent)
+                .addAction(R.drawable.notif_icone, titre, pIntent).build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
     }
 }

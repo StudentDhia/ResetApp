@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 import com.walidhelaoui.resetandroidapp.Services.NotificationService;
 
@@ -50,19 +51,19 @@ public class TrophysFragment extends Fragment {
         ImageView t11 = (ImageView) view.findViewById(R.id.t11);
         ImageView t12 = (ImageView) view.findViewById(R.id.t12);
 
-        comparaisonTrophy3(4,1,t1,"Trophy : You didn't smoke for 1 day");
-        comparaisonTrophy2(4,3,t2, "Trophy : You didn't smoke for 3 day");
-        comparaisonTrophy(4,7,t3, "Trophy : You didn't smoke for 7 day");
+        comparaisonTrophy3(4,1,t1,"You didn't smoke for 1 day");
+        comparaisonTrophy2(4,3,t2, "You didn't smoke for 3 day");
+        comparaisonTrophy(4,7,t3, "You didn't smoke for 7 day");
 
-        comparaisonTrophy3(25,20,t4, "Trophy : You saved 20$ from smoking");
+        comparaisonTrophy3(25,20,t4, "You saved 20$ from smoking");
         comparaisonTrophy2(25,50,t5, "Trophy : You saved 50$ from smoking");
         comparaisonTrophy(25,100,t6, "Trophy : You saved 100$ from smoking");
 
-        comparaisonTrophy3(1,1,t7, "Trophy : You didn't drink for 1 day");
+        comparaisonTrophy3(1,1,t7, "You didn't drink for 1 day");
         comparaisonTrophy2(4,3,t8, "Trophy : You didn't smoke for 3 day");
         comparaisonTrophy(4,7,t9, "Trophy : You didn't smoke for 1 week");
 
-        comparaisonTrophy3(14,20,t10, "Trophy : You saved 20$ from alcool");
+        comparaisonTrophy3(14,20,t10, "You saved 20$ from alcool");
         comparaisonTrophy2(14,50,t11, "Trophy : You saved 50$ from alcool");
         comparaisonTrophy(14,100,t12, "Trophy : You saved 100$ from alcool");
 
@@ -76,7 +77,7 @@ public class TrophysFragment extends Fragment {
         if(val >= limite){
 
             img.setImageResource(R.drawable.trophy);
-            NotificationService ns = new NotificationService();
+            //NotificationService ns = new NotificationService();
             //ns.createNotificationImage(msg,R.drawable.trophy, getActivity().getIntent());
             //FAUT CHANGER CA POUR QUE LA NOTIFICATION SE LANCE A TOUT MOMENT
         }
@@ -94,7 +95,7 @@ public class TrophysFragment extends Fragment {
         if(val >= limite){
 
             img.setImageResource(R.drawable.argent);
-            NotificationService ns = new NotificationService();
+            //NotificationService ns = new NotificationService();
             //ns.createNotificationImage(msg, R.drawable.argent, getActivity().getIntent());
         }
 
@@ -111,8 +112,12 @@ public class TrophysFragment extends Fragment {
         if(val >= limite){
 
             img.setImageResource(R.drawable.bronze);
-            NotificationService ns = new NotificationService();
-           // ns.createNotificationImage(msg, R.drawable.bronze,getActivity().getIntent());
+            //NotificationService ns = new NotificationService();
+            //ns.createNotificationImage(titre, msg, R.drawable.bronze,getActivity().getIntent());
+           // MainActivity mainActivity = new MainActivity();
+       //     MainActivity(createNotificationT(msg);
+            ((MainActivity)getActivity()).createNotificationT(msg);
+
         }
 
         img.setOnClickListener(new View.OnClickListener() {
@@ -122,5 +127,7 @@ public class TrophysFragment extends Fragment {
             }
         });
     }
+
+
 
 }
