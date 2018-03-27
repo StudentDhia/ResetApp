@@ -31,7 +31,7 @@ import java.util.Map;
 public class SmokingDataSource {
 
     public static List<SmokingStatistics> smoking = new ArrayList<>();
-
+    public static boolean isEmpty=false;
     public static void setSmoke(final Context context) {
         smoking = new ArrayList<>();
 
@@ -43,8 +43,13 @@ public class SmokingDataSource {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArray = new JSONArray(response);
 
+                            JSONArray jsonArray = new JSONArray(response);
+                            if(!response.equals("[]")){
+                                isEmpty=false;
+                            }else {
+                                isEmpty=true;
+                            }
                             for (int i = 0; i < jsonArray.length() ; i++) {
                                 Log.e(TAG,String.valueOf(i));
                                 SmokingStatistics smokingStatistics = new SmokingStatistics();
@@ -56,6 +61,7 @@ public class SmokingDataSource {
                             Log.e(TAG,jsonArray.toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            isEmpty=true;
                         }
 
                     }

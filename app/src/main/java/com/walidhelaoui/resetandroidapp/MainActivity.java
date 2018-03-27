@@ -22,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ import com.walidhelaoui.resetandroidapp.Fragments.Trophys.TrophysFragment;
 import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import com.roughike.bottombar.BottomBar;
+import com.walidhelaoui.resetandroidapp.utils.UserTrophy;
 
 import java.util.Calendar;
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public DrinkSavedMoney drinkSavedMoney;
     public SmokeSavedMoney smokeSavedMoney;
     public static BottomBar bottomBar;
-    public static final String PREFS_QUIZ = "prefs_quiz";
+    public static final String PREFS_QUIZ = "prefs_quiz"+CurrentUser.user.getUsername();
     private final Runnable m_Runnable = new Runnable()
     {
         public void run()
@@ -65,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
         {
             MainActivity.this.mHandler.postDelayed(m_Runnable, 3000);
 
-            if (!CurrentUser.user.toString().equals("")){
+            if (!CurrentUser.user.toString().equals("")&&smokeSavedMoney.getCount()!=-1){
                 Log.e(TAG, CurrentUser.user.getUsername());
-                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.contentDrawer);
-                relativeLayout.setVisibility(View.VISIBLE);
+                LinearLayout linearLayoutLayout = (LinearLayout) findViewById(R.id.mainContent);
+                linearLayoutLayout.setVisibility(View.VISIBLE);
                 loading = (GifImageView) findViewById(R.id.loading);
                 loading.setVisibility(View.GONE);
                 tv_email.setText(CurrentUser.user.getEmail());
@@ -105,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
         if (notification){
             motivationProgram1(notification_time);
         }
-
+        new UserTrophy(this);
         this.mHandler = new Handler();
         this.mHandler.postDelayed(m_Runnable,3000);
 
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.contentDrawer);
-        relativeLayout.setVisibility(View.INVISIBLE);
+        LinearLayout linearLayoutLayout = (LinearLayout) findViewById(R.id.mainContent);
+        linearLayoutLayout.setVisibility(View.INVISIBLE);
         drinkSavedMoney = new DrinkSavedMoney(this);
         smokeSavedMoney = new SmokeSavedMoney(this);
 

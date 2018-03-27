@@ -26,7 +26,7 @@ import java.util.Map;
 public class SmokeSavedMoney {
 
     int savedMoney;
-    int count;
+    int count=-1;
 
     public SmokeSavedMoney(final Context context) {
          final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/smoking/savedMoney";

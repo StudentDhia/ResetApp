@@ -22,6 +22,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.RetourAlchoolFragment;
 import com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz.RetourSmokingFragment;
 import com.walidhelaoui.resetandroidapp.LoginActivity;
@@ -129,6 +131,11 @@ public class ScoreFragment extends Fragment {
                 TextScore.setText("Alcohol : High dependence");
             }
         }
+
+        YoYo.with(Techniques.BounceInUp)
+                .duration(2000)
+                .playOn(TextScore);
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override

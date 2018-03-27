@@ -1,5 +1,6 @@
 package com.walidhelaoui.resetandroidapp.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,10 +19,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.walidhelaoui.resetandroidapp.Entity.Settings;
 import com.walidhelaoui.resetandroidapp.LoginActivity;
 import com.walidhelaoui.resetandroidapp.MainActivity;
 import com.walidhelaoui.resetandroidapp.R;
 import com.walidhelaoui.resetandroidapp.utils.AppSingleton;
+import com.walidhelaoui.resetandroidapp.utils.CurrentUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,11 +38,28 @@ import java.util.Map;
 
 public class SettingsFragment extends PreferenceFragment {
 
+    public static Settings settings;
+    private static final String TAG = "SettingsFragment";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        settings = new Settings();
         addPreferencesFromResource(R.xml.settings);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String alcohol_money = prefs.getString("pref_alcohol_money","");
+        String smoke_money = prefs.getString("pref_smoke_money","");
+        if (alcohol_money .equals("0") || smoke_money.equals("0")) {
+            getSettingsValue(getActivity());
+            if (settings.getSmoking_price()!=-1&&settings.getDrinking_price()!=-1){
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                editor.putString("pref_alcohol_money", String.valueOf(settings.getDrinking_price()));
+                editor.putString("pref_smoke_money", String.valueOf(settings.getSmoking_price()));
+                editor.apply();
+                Log.e(TAG," "+settings.getSmoking_price());
+            }
+
+        }
     }
 
 
@@ -50,6 +70,7 @@ public class SettingsFragment extends PreferenceFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         if (view != null) {
             view.setBackgroundResource(R.drawable.backgroundlight);
+            Log.e(TAG," "+settings.getSmoking_price());
         }
 
 
@@ -101,7 +122,6 @@ public class SettingsFragment extends PreferenceFragment {
 
     public void setData(final String alcohol_money, final String smoke_money){
         final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/setting";
-        final String TAG = "SettingFragment";
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
 
         // Request parameters to be send with post request
@@ -146,6 +166,44 @@ public class SettingsFragment extends PreferenceFragment {
 
         // Adding JsonObject request to request queue
         AppSingleton.getInstance(getActivity()).addToRequestQueue(postRequest, REQUEST_TAG);
+    }
+
+    public static void getSettingsValue(Context context){
+        String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, LoginActivity.ServerURL+"setting/value", // the request body, which is a JsonObject otherwise null
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            settings.setSmoking_price(jsonObject.getInt("smoking_setting_price"));
+                            settings.setDrinking_price(jsonObject.getInt("drinking_setting_price"));
+                            Log.e(TAG,response.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }
+        ) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer " + LoginActivity.token);
+                return headers;
+            }
+
+
+        };
+
+        // Adding JsonObject request to request queue
+        AppSingleton.getInstance(context).addToRequestQueue(postRequest, REQUEST_TAG);
     }
 
 }

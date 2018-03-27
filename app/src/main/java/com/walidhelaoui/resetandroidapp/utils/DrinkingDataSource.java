@@ -28,12 +28,12 @@ import java.util.Map;
 public class DrinkingDataSource {
 
     public static List<DrinkingStatistics> drinking = new ArrayList<>();
-
+    public static boolean isEmpty=false;
     public static void setDrink(final Context context) {
         drinking = new ArrayList<>();
 
         final String ServerURL = LoginActivity.ServerAddress+"resetWS/web/api/drinking/all";
-        final String TAG = "SmokingDataSource";
+        final String TAG = "DrinkingDataSource";
         String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
         StringRequest postRequest = new StringRequest(Request.Method.GET, ServerURL, // the request body, which is a JsonObject otherwise null
                 new Response.Listener<String>() {
@@ -41,7 +41,12 @@ public class DrinkingDataSource {
                     public void onResponse(String response) {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-
+                            if(!response.equals("[]")){
+                                isEmpty=false;
+                            }else {
+                                isEmpty=true;
+                            }
+                            Log.e(TAG,response);
                             for (int i = 0; i < jsonArray.length() ; i++) {
                                 Log.e(TAG,String.valueOf(i));
                                 DrinkingStatistics drinkingStatistics = new DrinkingStatistics();
@@ -52,6 +57,7 @@ public class DrinkingDataSource {
                             }
                             Log.e(TAG,jsonArray.toString());
                         } catch (JSONException e) {
+                            isEmpty=true;
                             e.printStackTrace();
                         }
 

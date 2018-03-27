@@ -174,7 +174,7 @@ public class DrinkFragment extends Fragment {
             }
         });
 
-        new BadgeView.AnimationSet(badgeView).add("1", 2500).play();
+//        new BadgeView.AnimationSet(badgeView).add("1", 2500).play();
 
     }
 

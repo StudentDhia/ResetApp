@@ -5,10 +5,12 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.walidhelaoui.resetandroidapp.Controller.SmokeAdapter;
 import com.walidhelaoui.resetandroidapp.Entity.SmokingStatistics;
@@ -19,6 +21,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.walidhelaoui.resetandroidapp.utils.SmokingDataSource.isEmpty;
 import static com.walidhelaoui.resetandroidapp.utils.SmokingDataSource.smoking;
 
 public class SmokingStatisticsActivity extends AppCompatActivity {
@@ -39,6 +42,11 @@ public class SmokingStatisticsActivity extends AppCompatActivity {
                 SmokeAdapter adapter = new SmokeAdapter(SmokingStatisticsActivity.this, smoking);
                 listView.setAdapter(adapter);
                 mHandler.removeCallbacksAndMessages(null);
+            }
+            if(isEmpty){
+                progressDialog.hide();
+                mHandler.removeCallbacksAndMessages(null);
+                Toast.makeText(getApplicationContext(),"There aren't any data available right now!",Toast.LENGTH_LONG).show();
             }
         }
 
@@ -67,7 +75,7 @@ public class SmokingStatisticsActivity extends AppCompatActivity {
         SmokingDataSource.setSmoke(this);
         SmokeAdapter adapter = new SmokeAdapter(this, smoking);
         listView.setAdapter(adapter);
-
+        Log.e("isEmpty: ",""+isEmpty);
 
     }
 

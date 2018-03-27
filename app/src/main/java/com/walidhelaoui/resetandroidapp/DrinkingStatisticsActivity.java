@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.walidhelaoui.resetandroidapp.Controller.DrinkAdapter;
 import com.walidhelaoui.resetandroidapp.Controller.SmokeAdapter;
@@ -41,6 +42,11 @@ public class DrinkingStatisticsActivity extends AppCompatActivity {
                 DrinkAdapter adapter = new DrinkAdapter(DrinkingStatisticsActivity.this, DrinkingDataSource.drinking);
                 listView.setAdapter(adapter);
                 mHandler.removeCallbacksAndMessages(null);
+            }
+            if(DrinkingDataSource.isEmpty){
+                progressDialog.hide();
+                mHandler.removeCallbacksAndMessages(null);
+                Toast.makeText(getApplicationContext(),"There aren't any data available right now!",Toast.LENGTH_LONG).show();
             }
         }
 

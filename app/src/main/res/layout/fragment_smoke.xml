@@ -12,14 +12,6 @@
         android:layout_height="match_parent"
         android:translationZ="-1dp">
 
-        <su.levenetc.android.badgeview.BadgeView
-            android:id="@+id/badgeMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            app:badgeText="    "
-            app:badgeTextSize="14dp"/>
-
     </LinearLayout>
 
 
@@ -153,7 +145,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:textSize="50dp"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
                         android:layout_gravity="center"
                         android:rotation="-45"
                         android:textColor="#000000"
