@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/backgroundlight"
-    tools:context="com.walidhelaoui.resetandroidapp.SplashActivity">
+    tools:context="com.esprit.reset.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"

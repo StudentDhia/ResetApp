@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.SmokingQuiz.QuizS3Fragment">
+    tools:context="com.esprit.reset.Fragments.Quiz.SmokingQuiz.QuizS3Fragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

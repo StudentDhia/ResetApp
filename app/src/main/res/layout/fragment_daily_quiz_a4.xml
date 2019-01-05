@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.DailySmokingQuiz.DailyQuizS4Fragment">
+    tools:context="com.esprit.reset.Fragments.Quiz.DailySmokingQuiz.DailyQuizS4Fragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

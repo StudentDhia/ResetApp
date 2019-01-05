@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.walidhelaoui.resetandroidapp">
+    package="com.esprit.reset">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.esprit.reset.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,14 +20,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Services.NotificationService">
+        <service android:name="com.esprit.reset.Services.NotificationService">
             <intent-filter>
                 <action android:name="com.walidhelaoui.resetandroidapp.Services.NotificationService" />
             </intent-filter>
         </service>
 
         <receiver
-            android:name=".Services.BootReceiver"
+            android:name="com.esprit.reset.Services.BootReceiver"
             android:enabled="true"
             android:exported="true"
             android:label="BootReceiver">
@@ -36,28 +36,28 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistreActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SmokingStatisticsActivity">
+        <activity android:name="com.esprit.reset.LoginActivity" />
+        <activity android:name="com.esprit.reset.RegistreActivity" />
+        <activity android:name="com.esprit.reset.MainActivity" />
+        <activity android:name="com.esprit.reset.SmokingStatisticsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.esprit.reset.MainActivity" />
         </activity>
-        <activity android:name=".DrinkingStatisticsActivity">
+        <activity android:name="com.esprit.reset.DrinkingStatisticsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.esprit.reset.MainActivity" />
         </activity>
-        <activity android:name=".SmokingChartActivity">
+        <activity android:name="com.esprit.reset.SmokingChartActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.esprit.reset.MainActivity" />
         </activity>
-        <activity android:name=".DrinkingChartActivity">
+        <activity android:name="com.esprit.reset.DrinkingChartActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.esprit.reset.MainActivity" />
         </activity>
     </application>
 

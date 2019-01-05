@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.walidhelaoui.resetandroidapp.Fragments.Quiz.DrinkingQuiz.RetourAlchoolFragment">
+    tools:context="com.esprit.reset.Fragments.Quiz.DrinkingQuiz.RetourAlchoolFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
