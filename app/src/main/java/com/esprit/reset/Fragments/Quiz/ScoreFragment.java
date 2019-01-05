@@ -1,0 +1,182 @@
+package com.esprit.reset.Fragments.Quiz;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.esprit.reset.Fragments.Quiz.DrinkingQuiz.RetourAlchoolFragment;
+import com.esprit.reset.Fragments.Quiz.SmokingQuiz.RetourSmokingFragment;
+import com.esprit.reset.LoginActivity;
+import com.esprit.reset.MainActivity;
+import com.esprit.reset.R;
+import com.esprit.reset.utils.AppSingleton;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * to handle interaction events.
+ * Use the {@link ScoreFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class ScoreFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    public static final String PREFS_QUIZ_BACK = "prefs_quiz_back";
+
+
+    // TODO: Rename and change types of parameters
+    private int mParam1;
+    private String mParam2;
+    private TextView TextScore;
+
+    public ScoreFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment ScoreFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static ScoreFragment newInstance(int param1, String param2) {
+        ScoreFragment fragment = new ScoreFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getInt(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_score, container, false);
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextScore = (TextView) view.findViewById(R.id.score);
+        setScore(mParam1,mParam2);
+        // Open SharedPrefs File in Edit Mode
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.edit().putBoolean(MainActivity.PREFS_QUIZ, true).apply();
+
+        if(mParam2 == "cigarette") {
+           // prefs.edit().putBoolean(PREFS_QUIZ_SMOKING, true).apply();
+            if (mParam1 < 3) {
+                TextScore.setText("Cigarette : Low dependance");
+            } else if (mParam1 == 3 || mParam1 == 4) {
+                TextScore.setText("Cigarette : Low to mod dependence");
+            } else if (mParam1 == 5 || mParam1 == 6) {
+                TextScore.setText("Cigarette : Moderate dependence");
+            } else {
+                TextScore.setText("Cigarette : High dependence");
+            }
+        }
+        if(mParam2 == "alcohol") {
+           // prefs.edit().putBoolean(PREFS_QUIZ_DRINKING, true).apply();
+            if (mParam1 < 12) {
+                TextScore.setText("Alcohol : Low dependance");
+            } else if (mParam1 <16 && mParam1 > 11) {
+                TextScore.setText("Alcohol : Low to mod dependence");
+            } else if (mParam1 <22 && mParam1 > 15) {
+                TextScore.setText("Alcohol : Moderate dependence");
+            } else {
+                TextScore.setText("Alcohol : High dependence");
+            }
+        }
+
+        YoYo.with(Techniques.BounceInUp)
+                .duration(2000)
+                .playOn(TextScore);
+
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                Boolean backPrefs = prefs.getBoolean(PREFS_QUIZ_BACK,false);
+
+                if ((mParam2== "cigarette")&&(!backPrefs)){
+                    prefs.edit().putBoolean(PREFS_QUIZ_BACK, true).apply();
+                    ((MainActivity)getActivity()).replaceFragment(new RetourSmokingFragment());
+                }else if ((mParam2== "alcohol")&&(!backPrefs)){
+                    prefs.edit().putBoolean(PREFS_QUIZ_BACK, true).apply();
+                    ((MainActivity)getActivity()).replaceFragment(new RetourAlchoolFragment());
+                }else {
+                    startActivity(new Intent(getActivity(),MainActivity.class));
+                }
+               // startActivity(new Intent(getActivity(),MainActivity.class));
+
+            }
+        };
+        handler.postDelayed(runnable, 5000);
+    }
+
+    public void setScore(final int score,String type){
+        final String ServerURL,Param;
+        if (type=="cigarette"){
+              ServerURL = LoginActivity.ServerAddress+"reset/webservices/SmokingScore.php";
+              Param = "smokeScore";
+        }else if (type == "alcohol"){
+              ServerURL = LoginActivity.ServerAddress+"reset/webservices/DrinkingScore.php";
+              Param = "drinkScore";
+        }else{
+            return;
+        }
+        final String TAG = "SettingFragment";
+        String REQUEST_TAG = "com.androidtutorialpoint.volleyJsonObjectRequest";
+        // Request parameters to be send with post request
+        StringRequest postRequest = new StringRequest(Request.Method.GET, ServerURL+"?id="+LoginActivity.token+"&score="+score, // the request body, which is a JsonObject otherwise null
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e(TAG,response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG,"error");
+                    }
+                }
+        );
+        // Adding JsonObject request to request queue
+        AppSingleton.getInstance(getContext()).addToRequestQueue(postRequest, REQUEST_TAG);
+    }
+
+}
